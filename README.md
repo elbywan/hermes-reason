@@ -1,5 +1,7 @@
 # hermes-reason
 
+*Experimental, work in progress…*
+
 **Contains the following libraries and executables:**
 
 ```
