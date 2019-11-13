@@ -1,0 +1,3 @@
+[submodule "hermes-protocol"]
+	path = hermes-protocol
+	url = ./hermes-protocol/

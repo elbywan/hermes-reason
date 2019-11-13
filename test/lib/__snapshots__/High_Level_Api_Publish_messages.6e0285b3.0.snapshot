@@ -1,0 +1,2 @@
+High Level Api › Publish messages › End session
+{\"sessionId\":\"session id\",\"text\":\"Session ended\"}\\n

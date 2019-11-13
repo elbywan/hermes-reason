@@ -1,0 +1,2 @@
+High Level Api › Publish messages › Configure dialog
+{\"siteId\":\"default\",\"intents\":[{\"intentId\":\"intent1\",\"enable\":true},{\"intentId\":\"intent2\",\"enable\":false},{\"intentId\":\"intent3\",\"enable\":false}]}\\n

@@ -1,0 +1,2 @@
+High Level Api › Publish messages › Injection request
+{\"operations\":[[\"add\",{\"films\":[[\"The Wolf of Wall Street\",1],[\"The Lord of the Rings\",1]]}]],\"lexicon\":{\"films\":[\"The Wolf of Wall Street\",\"The Lord of the Rings\"]},\"crossLanguage\":\"en\",\"id\":\"abcdef\"}\\n

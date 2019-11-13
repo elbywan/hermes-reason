@@ -1,0 +1,2 @@
+High Level Api › Publish messages › Continue session
+{\"sessionId\":\"677a2717-7ac8-44f8-9013-db2222f7923d\",\"text\":\"text\",\"intentFilter\":[\"intentA\",\"intentB\"],\"customData\":null,\"sendIntentNotRecognized\":true,\"slot\":null}\\n
