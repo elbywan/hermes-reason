@@ -27,7 +27,7 @@ let endFlow = () => {
   Unix.sleepf(0.2);
 };
 
-describeOnly("Dialog flow api", ({test, _}) => {
+describe("Dialog flow api", ({test, _}) => {
   open Tools;
 
   test("Single dialog flow round", ({expect, env: hermes}) => {
@@ -108,7 +108,7 @@ describeOnly("Dialog flow api", ({test, _}) => {
       if (continueSession) {
         flow
         |> continue(
-             ~intent="test" ++ string_of_int(rounds^ + 2),
+             ~intent="test" ++ string_of_int(rounds^ + 3),
              ~callback=roundCallback,
            )
         |> speak("Session continued");

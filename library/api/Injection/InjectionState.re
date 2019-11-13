@@ -25,6 +25,7 @@ type subscriptions = {
 type t = {
   facade: lazy_t(ptr(CInjectionFacade.t_view)),
   subscriptions,
+  handlers: ref(HList.t),
 };
 
 let make = protocolHandler => {
@@ -41,6 +42,7 @@ let make = protocolHandler => {
     injectionResetComplete: None,
     injectionStatus: None,
   },
+  handlers: ref(HList.[]),
 };
 
 let reduce = state =>
@@ -50,6 +52,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.injectionComplete,
         ~setSubscriptions=s => state.subscriptions.injectionComplete = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_injection_subscribe_injection_complete,
         ~lazyFacade=state.facade,
         ~once,
@@ -69,6 +73,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.injectionResetComplete,
         ~setSubscriptions=s => state.subscriptions.injectionResetComplete = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_injection_subscribe_injection_reset_complete,
         ~lazyFacade=state.facade,
         ~once,
@@ -88,6 +94,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.injectionStatus,
         ~setSubscriptions=s => state.subscriptions.injectionStatus = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_injection_subscribe_injection_status,
         ~lazyFacade=state.facade,
         ~once,

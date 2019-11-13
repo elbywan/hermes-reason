@@ -37,6 +37,7 @@ type t = {
   facade: lazy_t(ptr(CDialogueFacade.t_view)),
   subscriptions,
   flowSessions: ref(list(string)),
+  handlers: ref(HList.t),
 };
 
 let make = protocolHandler => {
@@ -57,6 +58,7 @@ let make = protocolHandler => {
     sessionEnded: None,
   },
   flowSessions: ref([]),
+  handlers: ref(HList.[]),
 };
 
 let reduce = state =>
@@ -72,6 +74,8 @@ let reduce = state =>
               state.subscriptions.intent
               |> StringMap.update(intent, _ => subscriptions)
           },
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=
           (facade, cb) =>
             hermes_dialogue_subscribe_intent(facade, intent, cb),
@@ -99,6 +103,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.intents,
         ~setSubscriptions=s => state.subscriptions.intents = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_dialogue_subscribe_intents,
         ~lazyFacade=state.facade,
         ~once,
@@ -118,6 +124,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.notRecognized,
         ~setSubscriptions=s => state.subscriptions.notRecognized = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_dialogue_subscribe_intent_not_recognized,
         ~lazyFacade=state.facade,
         ~once,
@@ -137,6 +145,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.sessionStarted,
         ~setSubscriptions=s => state.subscriptions.sessionStarted = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_dialogue_subscribe_session_started,
         ~lazyFacade=state.facade,
         ~once,
@@ -156,6 +166,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.sessionQueued,
         ~setSubscriptions=s => state.subscriptions.sessionQueued = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_dialogue_subscribe_session_queued,
         ~lazyFacade=state.facade,
         ~once,
@@ -175,6 +187,8 @@ let reduce = state =>
         ~subscription,
         ~getSubscriptions=() => state.subscriptions.sessionEnded,
         ~setSubscriptions=s => state.subscriptions.sessionEnded = s,
+        ~registerHandler=
+          handler => state.handlers := HList.[handler, ...state.handlers^],
         ~hermesFun=hermes_dialogue_subscribe_session_ended,
         ~lazyFacade=state.facade,
         ~once,

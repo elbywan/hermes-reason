@@ -1,6 +1,12 @@
 open Ctypes;
 open Utils;
 
+module HList = {
+  type t =
+    | []: t
+    | ::(('a, t)): t;
+};
+
 let flattenOptList =
   fun
   | None => []
@@ -46,6 +52,7 @@ let subscribe =
       ~subscription,
       ~getSubscriptions,
       ~setSubscriptions,
+      ~registerHandler,
       ~hermesFun,
       ~lazyFacade,
     ) => {
@@ -56,7 +63,7 @@ let subscribe =
     fun
     | Some(list) => Some([element, ...list])
     | None => {
-        hermesFun(Lazy.force @@ lazyFacade, msg => {
+        let handler = msg => {
           getSubscriptions()
           |> flattenOptList
           |> List.iter(
@@ -70,9 +77,10 @@ let subscribe =
                      ~setSubscriptions,
                    );
                  },
-             )
-        })
-        |> checkSnipsResult;
+             );
+        };
+        registerHandler(handler);
+        hermesFun(Lazy.force @@ lazyFacade, handler) |> checkSnipsResult;
         Some([element]);
       }
   )
