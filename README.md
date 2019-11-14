@@ -156,7 +156,7 @@ hermes
       text: Some("The session lives on…"),
       // A list of possible intent continuations for the next round.
       intent_filter: Some(["next_intent"]),
-      // Unused by the crystal wrapper.
+      // Unused by the reasonml wrapper.
       custom_data: None,
       // An optional slot filler argument. Not needed for this example.
       slot: None,
