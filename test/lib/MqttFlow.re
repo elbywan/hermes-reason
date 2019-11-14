@@ -102,7 +102,7 @@ describe("Dialog flow api", ({test, _}) => {
     let rounds = ref(0);
 
     let intentMessage = readMessage("./test/lib/messages/Intent.json");
-    let rec roundCallback = (msg, flow) => {
+    let rec roundCallback = (_, flow) => {
       let continueSession = rounds^ < maxRounds;
       rounds := rounds^ + 1;
       if (continueSession) {

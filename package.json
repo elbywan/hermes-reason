@@ -1,6 +1,6 @@
 {
   "name": "hermes-reason",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ReasonML & Ocaml bindings for the hermes protocol.",
   "esy": {
     "build": "refmterr dune build -p #{self.name}",
@@ -55,7 +55,8 @@
     "pesy": "bash -c 'env PESY_MODE=update pesy'",
     "test": "esy x HermesReasonTests.exe",
     "test--snapshots": "esy x HermesReasonTests.exe -u",
-    "example": "esy x HermesReasonExample.exe"
+    "example": "esy x HermesReasonExample.exe",
+    "doc": "dune build @doc"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",
@@ -72,6 +73,7 @@
     "refmterr": "*",
     "pesy": "*",
     "@opam/merlin": "*",
-    "isexe": "^2.0.0"
+    "isexe": "^2.0.0",
+    "@opam/odoc": "*"
   }
 }
