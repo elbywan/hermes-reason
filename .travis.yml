@@ -15,5 +15,5 @@ install:
   - git submodule update --init --recursive
 
 script:
-  - (cd hermes-protocol && cargo build -p hermes-mqtt-ffi -p hermes-ffi-test --release)
+  - (cd hermes-protocol && cargo build -p hermes-mqtt-ffi -p hermes-ffi-test)
   - esy test
