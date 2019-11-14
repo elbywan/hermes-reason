@@ -1,17 +1,26 @@
+/**
+  {1 Overview}
+
+  The Hermes module is the entry point to hermes-reason.
+  It can be used to connect and communicate with the Snips platform.
+*/;
+
 open Bindings;
 open Structs;
 open Utils;
 open Ctypes;
 
-/* Types */
-
+/**
+  The Hermes instance state.
+*/
 type t = {
   protocolHandler: ptr(CProtocolHandler.t_view),
   state: State.t,
 };
 
-/* Constructor */
-
+/**
+ Default Hermes options: no encryption and a local address on port 1883.
+*/
 let defaultOptions =
   CMqttOptions.{
     broker_address: "localhost:1883",
@@ -25,6 +34,9 @@ let defaultOptions =
     tls_disable_root_store: false,
   };
 
+/**
+  Create a new Hermes state by connecting to the broker.
+*/
 let make =
     (
       ~libraryPath="./libhermes_mqtt_ffi",
@@ -80,6 +92,9 @@ let perform = (hermes, action) => {
 
 /* Destructor */
 
+/**
+  Destroy the hermes instance and free underlying resources.
+*/
 let destroy = (hermes: t) => {
   let destroyFacade = (facade, destroy) =>
     if (Lazy.is_val @@ facade) {

@@ -56,7 +56,8 @@
     "test": "esy x HermesReasonTests.exe",
     "test--snapshots": "esy x HermesReasonTests.exe -u",
     "example": "esy x HermesReasonExample.exe",
-    "doc": "dune build @doc"
+    "doc": "dune build @doc",
+    "copy:doc": "cp -R ./_esy/default/build/default/_doc/_html ./docs"
   },
   "dependencies": {
     "@esy-ocaml/reason": "*",

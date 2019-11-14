@@ -1,3 +1,10 @@
+/**
+  Contains all the enumerations related to the hermes library.
+*/
+
+/**
+ The result of a call to the hermes library.
+*/
 let snips_result =
   Ctypes.(
     view(
@@ -14,6 +21,9 @@ let snips_result =
   );
 
 %enum
+/**
+  Enum representing the grain of a resolved date related value.
+*/
 type snips_grain =
   | SNIPS_GRAIN_YEAR
   | SNIPS_GRAIN_QUARTER
@@ -25,6 +35,9 @@ type snips_grain =
   | SNIPS_GRAIN_SECOND;
 
 %enum
+/**
+  Describes Snips components that are part of the platform.
+*/
 type snips_hermes_component =
   | [@as (-1)] SNIPS_HERMES_COMPONENT_NONE
   | [@as 1] SNIPS_HERMES_COMPONENT_AUDIO_SERVER
@@ -37,21 +50,33 @@ type snips_hermes_component =
   | [@as 8] SNIPS_HERMES_COMPONENT_CLIENT_APP;
 
 %enum
+/**
+  Type of injection supported.
+*/
 type snips_injection_kind =
   | [@as 1] SNIPS_INJECTION_KIND_ADD
   | [@as 2] SNIPS_INJECTION_KIND_ADD_FROM_VANILLA;
 
 %enum
+/**
+  Enum describing the precision of a resolved value.
+*/
 type snips_precision =
   | SNIPS_PRECISION_APPROXIMATE
   | SNIPS_PRECISION_EXACT;
 
 %enum
+/**
+  The type of sessions that can be initiated programatically.
+*/
 type snips_session_init_type =
   | [@as 1] SNIPS_SESSION_INIT_TYPE_ACTION
   | [@as 2] SNIPS_SESSION_INIT_TYPE_NOTIFICATION;
 
 %enum
+/**
+  The reasons that caused a session termination.
+*/
 type snips_session_termination_type =
   | [@as 1] SNIPS_SESSION_TERMINATION_TYPE_NOMINAL
   | [@as 2] SNIPS_SESSION_TERMINATION_TYPE_SITE_UNAVAILABLE
@@ -61,6 +86,9 @@ type snips_session_termination_type =
   | [@as 6] SNIPS_SESSION_TERMINATION_TYPE_ERROR;
 
 %enum
+/**
+  The type of slot values that are supported by Snips, either custom or built in.
+*/
 type snips_slot_value_type =
   | [@as 1] SNIPS_SLOT_VALUE_TYPE_CUSTOM
   | [@as 2] SNIPS_SLOT_VALUE_TYPE_NUMBER
