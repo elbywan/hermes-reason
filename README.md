@@ -20,7 +20,7 @@ open HermesReason;
 
 ### Minimal use case
 
-```reasonml
+```reason
 open HermesReason;
 
 // Instantiate a Hermes object connecting to the default MQTT address (localhost:1883).
@@ -52,7 +52,7 @@ while (true) {
 
 #### High-level `Flow` api.
 
-```reasonml
+```reason
 open HermesReason;
 
 let hermes = Hermes.make();
@@ -113,7 +113,7 @@ hermes |> Flow.entry(~intent="A", ~callback=(msg, flow) => {
 
 #### Low-level subscriber & publisher api.
 
-```reasonml
+```reason
 open HermesReason;
 open Structs;
 
