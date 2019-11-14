@@ -1,0 +1,17 @@
+language: node_js
+
+addons:
+  apt:
+    packages:
+      - mosquitto
+
+install:
+  - npm install --global esy
+  - esy install
+  - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  - source $HOME/.cargo/env
+  - git submodule update --init --recursive
+
+script:
+  - (cd hermes-protocol && cargo build -p hermes-mqtt-ffi -p hermes-ffi-test --release)
+  - esy test
