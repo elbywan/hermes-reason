@@ -2,6 +2,10 @@
 
 #### A ReasonML wrapper around the hermes protocol
 
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://elbywan.github.io/hermes-reason/)
+[![GitHub release](https://img.shields.io/github/release/elbywan/hermes-reason.svg)](https://github.com/elbywan/hermes-reason/releases)
+[![Build Status](https://travis-ci.org/elbywan/hermes-reason.svg?branch=master)](https://travis-ci.org/elbywan/hermes-reason)
+
 ## Context
 
 The `hermes-reason` library provides bindings for the [Hermes protocol](https://docs.snips.ai/reference/hermes) that [Snips](https://snips.ai/) components use to communicate together. `hermes-reason` allows you to interface seamlessly with the Snips platform and create Voice applications with ease!
